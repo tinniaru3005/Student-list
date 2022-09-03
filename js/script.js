@@ -1,5 +1,5 @@
 /*
-Create the `showPage` function
+The `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 
@@ -48,7 +48,7 @@ function showPage(list, page){
 }
 
 /*
-Create the `addPagination` function
+The `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
@@ -57,7 +57,7 @@ function addPagination(list) {
     //Variable to store number of pagination buttons required
     const paginationButtons = Math.ceil(list.length / 9);
     //Variable to contain the element for pagination buttons
-     const linkList = document.getElementsByClassName("link-list")[0];
+    const linkList = document.getElementsByClassName("link-list")[0];
 
     linkList.innerHTML = '';
 

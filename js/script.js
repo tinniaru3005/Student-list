@@ -54,38 +54,38 @@ This function will create and insert/append the elements needed for the paginati
 
 function addPagination(list) {
 
-       //Variable to store number of pagination buttons required
-       const paginationButtons = Math.ceil(list.length / 9);
-       //Variable to contain the element for pagination buttons
-       const linkList = document.getElementsByClassName("link-list")[0];
+    //Variable to store number of pagination buttons required
+    const paginationButtons = Math.ceil(list.length / 9);
+    //Variable to contain the element for pagination buttons
+     const linkList = document.getElementsByClassName("link-list")[0];
 
-       linkList.innerHTML = '';
+    linkList.innerHTML = '';
 
-       //Loop to add the buttons and append it to the ul
-       for(i = 0; i < paginationButtons; i++) {
-          //Create and add each button one by one to the ul
-          const li = document.createElement("li");
-          const button = document.createElement("button");
-          button.type = "button";
-          button.innerHTML = `${i+1}`;
-          //Append the button to the ul
-          linkList.append(li);
-          li.append(button);
-       }
+    //Loop to add the buttons and append it to the ul
+    for(i = 0; i < paginationButtons; i++) {
+        //Create and add each button one by one to the ul
+        const li = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.innerHTML = `${i+1}`;
+        //Append the button to the ul
+        linkList.append(li);
+        li.append(button);
+    }
 
-       linkList.addEventListener("click", (e) => {
-          if(e.target.tagName === 'BUTTON') {
+    linkList.addEventListener("click", (e) => {
+        if(e.target.tagName === 'BUTTON') {
             document.querySelector('.active').classList.remove('active');
             e.target.className = "active";
             const pageNumberClicked = e.target.textContent; 
             //Call the showPage function to display the contents of the required page
             showPage(list, pageNumberClicked);
-          }
-       });
+        }
+    });
 
-       // Create variable and place the active class on the first button. 
-       let active = document.getElementsByTagName('button')[0];
-       active.className = "active";
+    // Create variable and place the active class on the first button. 
+    let active = document.getElementsByTagName('button')[0];
+    active.className = "active";
 }
 
 // Call functions

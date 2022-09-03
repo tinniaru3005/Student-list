@@ -5,46 +5,46 @@ This function will create and insert/append the elements needed to display a "pa
 
 function showPage(list, page){
     //Create start and end index for the number of students to display on each page. 
-   const startIndex = (page * 9) - 9; 
-   const endIndex = page * 9 - 1;
-   const studentList = document.getElementsByClassName('student-list')[0];
-   studentList.innerHTML = ``;
+    const startIndex = (page * 9) - 9; 
+    const endIndex = page * 9 - 1;
+    const studentList = document.getElementsByClassName('student-list')[0];
+    studentList.innerHTML = ``;
 
-   for(let i = 0; i < list.length; i++) {
-      if(i >= startIndex && i <= endIndex) {
-        //Update the contents only when i is between startIndex and endIndex
-        //If i not between the startIndex and the endIndex then the loop doesn't do anything
+    for(let i = 0; i < list.length; i++) {
+        if(i >= startIndex && i <= endIndex) {
+            //Update the contents only when i is between startIndex and endIndex
+            //If i not between the startIndex and the endIndex then the loop doesn't do anything
 
-       //Create elements for each student's information  
-       const li = document.createElement('li'); 
-       const studentDetailsDiv = document.createElement('div');
-       const img = document.createElement('img');
-       const fullName = document.createElement('h3');//name
-       const emailSpan = document.createElement('span');
-       const dateSpan = document.createElement('span');
+            //Create elements for each student's information  
+            const li = document.createElement('li'); 
+            const studentDetailsDiv = document.createElement('div');
+            const img = document.createElement('img');
+            const fullName = document.createElement('h3');//name
+            const emailSpan = document.createElement('span');
+            const dateSpan = document.createElement('span');
          
-       //Update class names and attributes for the elements
-       li.className = "student-item cf";
-       studentDetailsDiv.className = "student-details";
+            //Update class names and attributes for the elements
+            li.className = "student-item cf";
+            studentDetailsDiv.className = "student-details";
 
-       img.className = "avatar";
-       img.src = data[i].picture.thumbnail; 
-       img.alt = "Profile Picture";
+            img.className = "avatar";
+            img.src = data[i].picture.thumbnail; 
+            img.alt = "Profile Picture";
 
-       emailSpan.className = "email";
-       dateSpan.className = "date";
+            emailSpan.className = "email";
+            dateSpan.className = "date";
 
-       //Updating the contents with student details
-       fullName.innerHTML = `${data[i].name.first} ${data[i].name.last}`;
-       emailSpan.innerHTML = data[i].email; 
-       dateSpan.innerHTML = `Joined ${data[i].registered.date}`;
+            //Updating the contents with student details
+            fullName.innerHTML = `${data[i].name.first} ${data[i].name.last}`;
+            emailSpan.innerHTML = data[i].email; 
+            dateSpan.innerHTML = `Joined ${data[i].registered.date}`;
 
-       //append
-       studentList.append(li);
-       li.appendChild(studentDetailsDiv);
-       studentDetailsDiv.append(img, fullName, emailSpan, dateSpan);
-      }
-   }
+            //append
+            studentList.append(li);
+            li.appendChild(studentDetailsDiv);
+            studentDetailsDiv.append(img, fullName, emailSpan, dateSpan);
+        }
+    }
 }
 
 /*
@@ -61,6 +61,7 @@ function addPagination(list) {
 
        linkList.innerHTML = '';
 
+       //Loop to add the buttons and append it to the ul
        for(i = 0; i < paginationButtons; i++) {
           //Create and add each button one by one to the ul
           const li = document.createElement("li");
@@ -82,7 +83,7 @@ function addPagination(list) {
           }
        });
 
-       // Create variable place the active class on the first button. 
+       // Create variable and place the active class on the first button. 
        let active = document.getElementsByTagName('button')[0];
        active.className = "active";
 }

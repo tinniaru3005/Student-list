@@ -83,7 +83,7 @@ function addPagination(list) {
         }
     });
 
-    // Create variable and place the active class on the first button. 
+    // Create the variable and place the active class on the first button. 
     let active = document.getElementsByTagName('button')[0];
     active.className = "active";
 }

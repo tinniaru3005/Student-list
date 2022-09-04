@@ -1,3 +1,28 @@
+function searchButton(){
+    const header = document.getElementsByClassName('header');
+
+    const label = document.createElement('label');
+    const nameSpan = document.createElement('span');
+    const input = document.createElement('input');
+    const button = document.createElement('button');
+    const img = document.createElement('img');
+
+    label.for = 'search';
+    label.classNme = 'student-search';
+    input.id = 'search';
+    input.placeholder = "Search by name...";
+    button.type = "button";
+    img.src = "img/icn-search.svg";
+    img.alt = "Search icon";
+
+
+    header.appendChild(label);
+    label.append(nameSpan, input, button);
+    button.appendChild(img);
+}
+
+
+
 /*
 The `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
@@ -91,3 +116,4 @@ function addPagination(list) {
 // Call functions
 showPage(data, 1);
 addPagination(data);
+searchButton();

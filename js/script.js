@@ -1,3 +1,35 @@
+function displayStudentData(i, studentList){
+    //Create elements for each student's information  
+    const li = document.createElement('li'); 
+    const studentDetailsDiv = document.createElement('div');
+    const img = document.createElement('img');
+    const fullName = document.createElement('h3');
+    const emailSpan = document.createElement('span');
+    const dateSpan = document.createElement('span');
+            
+    //Update class names and attributes for the elements
+    li.className = "student-item cf";
+    studentDetailsDiv.className = "student-details";
+
+    img.className = "avatar";
+    img.src = data[i].picture.thumbnail; 
+    img.alt = "Profile Picture";
+
+    emailSpan.className = "email";
+    dateSpan.className = "date";
+
+    //Updating the contents with student details
+    fullName.innerHTML = `${data[i].name.first} ${data[i].name.last}`;
+    emailSpan.innerHTML = data[i].email; 
+    dateSpan.innerHTML = `Joined ${data[i].registered.date}`;
+
+    //append
+    studentList.append(li);
+    li.appendChild(studentDetailsDiv);
+    studentDetailsDiv.append(img, fullName, emailSpan, dateSpan);
+}
+
+
 function searchButton(list){
     const header = document.getElementsByClassName('header')[0];
 
@@ -27,38 +59,11 @@ function searchButton(list){
 
         for(let i = 0; i < list.length; i++){
             if(data[i].name.first.toUpperCase() === searchedName.toUpperCase()){
-                const li = document.createElement('li'); 
-                const studentDetailsDiv = document.createElement('div');
-                const img = document.createElement('img');
-                const fullName = document.createElement('h3');
-                const emailSpan = document.createElement('span');
-                const dateSpan = document.createElement('span');
-            
-                //Update class names and attributes for the elements
-                li.className = "student-item cf";
-                studentDetailsDiv.className = "student-details";
-
-                img.className = "avatar";
-                img.src = data[i].picture.thumbnail; 
-                img.alt = "Profile Picture";
-
-                emailSpan.className = "email";
-                dateSpan.className = "date";
-
-                //Updating the contents with student details
-                fullName.innerHTML = `${data[i].name.first} ${data[i].name.last}`;
-                emailSpan.innerHTML = data[i].email; 
-                dateSpan.innerHTML = `Joined ${data[i].registered.date}`;
-
-                //append
-                studentList.append(li);
-                li.appendChild(studentDetailsDiv);
-                studentDetailsDiv.append(img, fullName, emailSpan, dateSpan);
+                displayStudentData(i, studentList);
             }
         }
     });
 }
-
 
 
 /*
@@ -77,35 +82,7 @@ function showPage(list, page){
         if(i >= startIndex && i <= endIndex) {
             //Update the contents only when i is between startIndex and endIndex
             //If i not between the startIndex and the endIndex then the loop doesn't do anything
-
-            //Create elements for each student's information  
-            const li = document.createElement('li'); 
-            const studentDetailsDiv = document.createElement('div');
-            const img = document.createElement('img');
-            const fullName = document.createElement('h3');
-            const emailSpan = document.createElement('span');
-            const dateSpan = document.createElement('span');
-         
-            //Update class names and attributes for the elements
-            li.className = "student-item cf";
-            studentDetailsDiv.className = "student-details";
-
-            img.className = "avatar";
-            img.src = data[i].picture.thumbnail; 
-            img.alt = "Profile Picture";
-
-            emailSpan.className = "email";
-            dateSpan.className = "date";
-
-            //Updating the contents with student details
-            fullName.innerHTML = `${data[i].name.first} ${data[i].name.last}`;
-            emailSpan.innerHTML = data[i].email; 
-            dateSpan.innerHTML = `Joined ${data[i].registered.date}`;
-
-            //append
-            studentList.append(li);
-            li.appendChild(studentDetailsDiv);
-            studentDetailsDiv.append(img, fullName, emailSpan, dateSpan);
+            displayStudentData(i, studentList);
         }
     }
 }
@@ -151,7 +128,7 @@ function addPagination(list) {
     active.className = "active";
 }
 
-// Call functions
+// Call the functions
 searchButton(data);
 showPage(data, 1);
 addPagination(data);

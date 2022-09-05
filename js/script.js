@@ -6,7 +6,7 @@ function displayStudentData(i, studentList){
     const fullName = document.createElement('h3');
     const emailSpan = document.createElement('span');
     const dateSpan = document.createElement('span');
-            
+
     //Update class names and attributes for the elements
     li.className = "student-item cf";
     studentDetailsDiv.className = "student-details";
@@ -53,12 +53,14 @@ function searchButton(list){
     button.appendChild(img);
 
     button.addEventListener('click', () => {
-        let searchedName = document.getElementById('search').value;
+        let searchedName = document.getElementById('search').value.toUpperCase();
         const studentList = document.getElementsByClassName('student-list')[0];
         studentList.innerHTML = ``;
 
         for(let i = 0; i < list.length; i++){
-            if(data[i].name.first.toUpperCase() === searchedName.toUpperCase()){
+            let firstName = data[i].name.first.toUpperCase();
+            let lastName = data[i].name.last.toUpperCase();
+            if(firstName === searchedName || lastName === searchedName){
                 displayStudentData(i, studentList);
             }
         }

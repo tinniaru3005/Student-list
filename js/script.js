@@ -18,6 +18,11 @@ function searchButton(){
     header.appendChild(label);
     label.append(nameSpan, input, button);
     button.appendChild(img);
+
+    button.addEventListener('click', () => {
+        const searchedName = document.getElementById('search').value;
+        console.log(searchedName);
+    });
 }
 
 

@@ -21,7 +21,6 @@ function searchButton(){
 
     button.addEventListener('click', () => {
         const searchedName = document.getElementById('search').value;
-        console.log(searchedName);
     });
 }
 

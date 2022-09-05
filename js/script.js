@@ -23,6 +23,39 @@ function searchButton(list){
     button.addEventListener('click', () => {
         let searchedName = document.getElementById('search').value;
         const studentList = document.getElementsByClassName('student-list')[0];
+        studentList.innerHTML = ``;
+
+        for(let i = 0; i < list.length; i++){
+            if(data[i].name.first.toUpperCase() === searchedName.toUpperCase()){
+                const li = document.createElement('li'); 
+                const studentDetailsDiv = document.createElement('div');
+                const img = document.createElement('img');
+                const fullName = document.createElement('h3');
+                const emailSpan = document.createElement('span');
+                const dateSpan = document.createElement('span');
+            
+                //Update class names and attributes for the elements
+                li.className = "student-item cf";
+                studentDetailsDiv.className = "student-details";
+
+                img.className = "avatar";
+                img.src = data[i].picture.thumbnail; 
+                img.alt = "Profile Picture";
+
+                emailSpan.className = "email";
+                dateSpan.className = "date";
+
+                //Updating the contents with student details
+                fullName.innerHTML = `${data[i].name.first} ${data[i].name.last}`;
+                emailSpan.innerHTML = data[i].email; 
+                dateSpan.innerHTML = `Joined ${data[i].registered.date}`;
+
+                //append
+                studentList.append(li);
+                li.appendChild(studentDetailsDiv);
+                studentDetailsDiv.append(img, fullName, emailSpan, dateSpan);
+            }
+        }
     });
 }
 

@@ -1,5 +1,5 @@
 function searchButton(){
-    const header = document.getElementsByClassName('header');
+    const header = document.getElementsByClassName('header')[0];
 
     const label = document.createElement('label');
     const nameSpan = document.createElement('span');
@@ -8,13 +8,12 @@ function searchButton(){
     const img = document.createElement('img');
 
     label.for = 'search';
-    label.classNme = 'student-search';
+    label.className = 'student-search';
     input.id = 'search';
     input.placeholder = "Search by name...";
     button.type = "button";
     img.src = "img/icn-search.svg";
     img.alt = "Search icon";
-
 
     header.appendChild(label);
     label.append(nameSpan, input, button);
@@ -114,6 +113,7 @@ function addPagination(list) {
 }
 
 // Call functions
+searchButton();
 showPage(data, 1);
 addPagination(data);
-searchButton();
+

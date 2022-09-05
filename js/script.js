@@ -1,4 +1,4 @@
-function searchButton(){
+function searchButton(list){
     const header = document.getElementsByClassName('header')[0];
 
     const label = document.createElement('label');
@@ -11,6 +11,7 @@ function searchButton(){
     label.className = 'student-search';
     input.id = 'search';
     input.placeholder = "Search by name...";
+    input.type = "text";
     button.type = "button";
     img.src = "img/icn-search.svg";
     img.alt = "Search icon";
@@ -20,7 +21,8 @@ function searchButton(){
     button.appendChild(img);
 
     button.addEventListener('click', () => {
-        const searchedName = document.getElementById('search').value;
+        let searchedName = document.getElementById('search').value;
+        const studentList = document.getElementsByClassName('student-list')[0];
     });
 }
 
@@ -47,7 +49,7 @@ function showPage(list, page){
             const li = document.createElement('li'); 
             const studentDetailsDiv = document.createElement('div');
             const img = document.createElement('img');
-            const fullName = document.createElement('h3');//name
+            const fullName = document.createElement('h3');
             const emailSpan = document.createElement('span');
             const dateSpan = document.createElement('span');
          
@@ -117,7 +119,7 @@ function addPagination(list) {
 }
 
 // Call functions
-searchButton();
+searchButton(data);
 showPage(data, 1);
 addPagination(data);
 

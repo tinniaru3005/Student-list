@@ -61,7 +61,8 @@ function searchButton(list){
             let firstName = data[i].name.first.toUpperCase();
             let lastName = data[i].name.last.toUpperCase();
             let fullName = `${firstName} ${lastName}`.toUpperCase();
-            if(searchedName === firstName || searchedName === lastName || searchedName === fullName){
+            let isSearchedName = searchedName === firstName || searchedName === lastName || searchedName === fullName;
+            if(isSearchedName){
                 displayStudentData(i, studentList);
             }
         }
